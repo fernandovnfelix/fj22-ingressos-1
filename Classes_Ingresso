@@ -1,0 +1,83 @@
+public class SalaController{
+
+private SessaoDao sessaoDao;
+
+MAV mav = new MAV(...);
+mav.addObject("sessoes",sessaoDao.listaSessoesDaSala(salaId);
+
+----
+
+public class SessaoForm{
+
+@NotNull
+private Integer salaId;
+@NotNull
+private Integer filmeId;
+
+@NotNull
+@LocalTimeFormat(pattern = "HH:mm")
+LocalTime horario;
+
+public SessaoToSessao(SalaDao salaDao, FilmeDao filmeDao){
+
+salaDao.findOne(salaId);
+filmeDao.findOne(filmeId);
+
+}
+
+----
+
+@Controller
+
+@Autowired
+private SessaoDao sessaoDao;
+@Autowired
+private FilmeDao filmeDao;
+@Autowired
+private SalaDao salaDao;
+
+@GetMapping("sessao")
+public ModelAndViewForm(@RequestParam("salaId") Integer salaId){
+	
+   ModelAndView mav = new ModelAndView("sessao/sessao");
+   mav.addObject("filmes", filmeDao.findAll());
+   mav.addObject("sala",salaDao.findOne(salaId));
+   mav.addObject("form", form);
+
+   return mv;
+}
+
+--------
+
+@Transactional
+@PostMapping("/sessao")
+public ModelAndView salva(@valid SessaoForm form, BindResult result){
+
+  if(result.hasErrors){
+	
+     form(form.getSalaId(), form);
+     SessaoDao.salva(sessao);
+     
+     return new ModelAndView(redirect:/sala" + form.getSalaId() + "/sessoes);
+  }
+}
+
+------------
+
+@Entity
+public class Sessao {
+  
+  @Id @GenerateValue
+  private Integer id;
+  @ManyToOne
+  private Filme filme;
+  @ManyToOne
+  private Sala sala;
+
+  private LocalTime horario;
+
+}  
+
+
+
+
