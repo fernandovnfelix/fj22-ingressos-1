@@ -30,12 +30,10 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-
-
 					<li><a href="/filmes">Filmes</a></li>
 					<li><a href="/salas">Salas</a></li>
-
-
+					<li><a href="/filme/filme/em-cartaz">Comprar</a></li>
+				
 					<sec:authorize access="!isAuthenticated()">
 						<li><a href="/login">Login</a></li>
 					</sec:authorize>
@@ -54,8 +52,8 @@
 					</sec:authorize>
 				</ul>
 			</div>
-
 		</div>
+		
 	</nav>
 
 	<jsp:doBody/>
